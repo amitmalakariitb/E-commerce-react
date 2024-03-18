@@ -1,0 +1,64 @@
+.container-checkout {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+  }
+  
+
+  .address-details {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .address {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .address-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+  }
+  
+  .address-card input {
+    margin-right: 5px;
+  }
+  
+  .address-header {
+    margin-bottom: 10px;
+  }
+  
+  /* Styling for the order summary section */
+  .order-summary {
+    flex: 1;
+  }
+  
+  .order-items {
+    margin-bottom: 20px;
+  }
+  
+  .order-item {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .order-item img {
+    max-width: 50px;
+    margin-right: 10px;
+  }
+  
+  .item-details {
+    flex: 1;
+  }
+  
+  .total-price {
+    text-align: right;
+    font-weight: bold;
+  }
