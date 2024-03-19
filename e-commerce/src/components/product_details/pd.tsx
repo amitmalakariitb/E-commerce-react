@@ -1,14 +1,16 @@
 
 
-import './product_details/pd.css';
+import '../../assets/pd.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Rate } from 'antd';
 import { Link } from 'react-router-dom';
+import Footer from '../footer/Footer';
 
 interface ReviewData {
+    username:string;
     rating: number;
-    reviewText: string;
+    review: string;
 }
 
 const ProductDetails = () => {
@@ -25,16 +27,14 @@ const ProductDetails = () => {
         };
 
         fetchData();
+        console.log(data)
     }, []);
 
-    if (!data) {
-        return <p>Loading...</p>;
-    }
+  
 
-
-    const [reviewText, setReviewText] = useState('');
+    const [review, setReviewText] = useState('');
     const [selectedRating, setSelectedRating] = useState(0);
-    const backendURL = 'http://127.0.0.1:8000/api/products/1/submit_review';
+    const backendURL = 'http://127.0.0.1:8000/api/product/1/submit_review';
 
     const handleReviewSubmission = async (reviewData: ReviewData) => {
         try {
@@ -47,15 +47,19 @@ const ProductDetails = () => {
 
     const handleReviewSubmit = () => {
         const reviewData: ReviewData = {
+            username: "udayd",
             rating: selectedRating,
-            reviewText: reviewText,
+            review: review,
         };
         handleReviewSubmission(reviewData);
     };
 
+    if (!data) {
+        return <p>Loading...</p>;
+    }
 
     return (
-        <div>
+        <div className='peoduct-details-body'>
             <div className="box">
                 <div className="content">
                     <div className="img-box">
@@ -77,9 +81,8 @@ const ProductDetails = () => {
                         <Link to="/add_to_cart">
                             <button className="Add_to_cart" id="Add-to-cart">Add to cart</button>
                         </Link>
-                        <br />
                         <Link to="/checkout">
-                            <button className="Buy" id="Buy" >Buy</button>
+                        <button className="Buy" id="Buy">Buy</button>
                         </Link>
                     </div>
                 </div>
@@ -92,7 +95,7 @@ const ProductDetails = () => {
                         <textarea
                             rows={5}
                             placeholder="Share your thoughts..."
-                            value={reviewText}
+                            value={review}
                             onChange={(e) => setReviewText(e.target.value)}
                         ></textarea>
                         <button className="submit-review" onClick={handleReviewSubmit}>
@@ -111,6 +114,7 @@ const ProductDetails = () => {
                     </div>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

@@ -1,6 +1,6 @@
 // import React from 'react'
 
-import "./Footer.css"
+import "../../assets/Footer.css"
 import { SocialIcon } from 'react-social-icons'
 
 const Footer = ( ) => {

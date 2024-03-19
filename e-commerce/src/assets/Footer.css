@@ -2,14 +2,14 @@
     --bg-color: rgb(209, 209, 171);
     --second-bg-color: rgba(212, 212, 188, 1);
     --text-color: #fff;
-    --main-color: rgb(179, 124, 52);
+    /* --main-color: rgb(179, 124, 52); */
   }
   
   body {
     margin: 0;
     padding: 0;
     width: 100%;
-    background-color: var(--second-bg-color);
+    /* background-color: var(--second-bg-color); */
   }
   
   .mainfooter {

@@ -7,8 +7,8 @@ import Footer from './components/footer/Footer'
 
 // just for checking 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ProductDetails from './pd';
-import Checkout from './checkout/checkout';
+import ProductDetails from './components/product_details/pd';
+import Checkout from './components/checkout/checkout';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -46,7 +46,7 @@ function App() {
           </p> */}
         {/* </Route> */}
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
 
     </>
