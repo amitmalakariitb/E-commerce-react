@@ -1,5 +1,5 @@
 @font-face {
-    font-family:'Press Start 2P' ;
+    font-family: 'Press Start 2P';
     src: url('/public/fonts/PressStart2P-Regular.ttf')format('ttf');
 }
 
@@ -15,7 +15,8 @@
     padding-top: 1%;
     background-color: rgba(212, 212, 188, 1);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
-    z-index: 1; /* Ensure the content is above the navbar */
+    z-index: 1;
+    /* Ensure the content is above the navbar */
 }
 
 #click {
@@ -30,8 +31,10 @@
     justify-content: space-between;
     align-items: center;
     overflow-x: auto;
-    position: absolute; /* Change to relative positioning */
-    margin-top: 34%; /* Adjust margin top to create space for navbar */
+    position: absolute;
+    /* Change to relative positioning */
+    margin-top: 34%;
+    /* Adjust margin top to create space for navbar */
 }
 
 #footer p {
@@ -43,8 +46,16 @@
 
 }
 
+#footer img {
+    margin-top: 5px;
+}
+
 #footer #amount {
     font-size: x-large;
+}
+
+.Total {
+    margin-top: 5px;
 }
 
 #add_items {
@@ -52,11 +63,12 @@
     position: fixed;
     top: 40%;
     display: flex;
-    z-index: 1; /* Ensure the content is above the navbar */
+    z-index: 1;
+    /* Ensure the content is above the navbar */
 }
 
-#add_items img{
-    width:50%;
+#add_items img {
+    width: 50%;
 }
 
 #add_items p {
@@ -73,14 +85,16 @@
 /* Adjustments to prevent overlap */
 @media only screen and (max-width: 992px) {
     #main_content {
-        top: 15%; /* Adjust top position to leave space for navbar */
+        top: 15%;
+        /* Adjust top position to leave space for navbar */
         height: 65%;
         width: 100vw;
     }
 
     #footer {
         position: absolute;
-        top: 59%; /* Adjust margin top to create space for navbar */
+        top: 59%;
+        /* Adjust margin top to create space for navbar */
         align-items: normal;
         margin-left: 4%;
     }
@@ -91,19 +105,20 @@
 
     .Total {
         margin-right: 10%;
-        
+
     }
 
-    
+
 
     #add_items {
         position: absolute;
-        top: 85%; /* Adjust top position to leave space for navbar */
-        margin-left:5%;
+        top: 85%;
+        /* Adjust top position to leave space for navbar */
+        margin-left: 5%;
     }
 
-    #add_items img{
+    #add_items img {
         margin-left: 45%;
-        width:75px;
+        width: 75px;
     }
 }

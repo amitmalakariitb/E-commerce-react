@@ -1,15 +1,20 @@
-import Navbar from "./components/Navigation/navbar";
+// import Navbar from "./components/Navigation/navbar";
 import MyCart from "./components/AddtoCart/CartPage";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
 
-function App(){
+function App() {
   return (
-    <>
-    <Navbar />
-    <MyCart />
-    </>
-  )
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/cartpage" element={<MyCart />} />
+        </Routes>
+      </div>
+    </Router>
+
+  );
 }
 
 export default App;
