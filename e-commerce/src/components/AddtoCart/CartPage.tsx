@@ -4,7 +4,7 @@ import ItemContainer from './ItemContainer';
 // import 'bootstrap/dist/css/bootstrap.css'
 import "../../assets/CartPage.css"
 import Navbar from '../Navigation/navbar';
-// import '../../assets/style.css'
+import '../../assets/style.css'
 const MyCart: React.FC = () => {
   const [cartItems, setCartItems] = useState([]);
 

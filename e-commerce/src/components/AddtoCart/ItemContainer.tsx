@@ -91,6 +91,7 @@ const ItemContainer: React.FC<ItemContainerProps> = ({ product_id, product_img, 
             <div className="details">
               <p>Qty:</p>
               <QuantitySelector init_quantity={currentQuantity} onQuantityChange={handleQuantityChange} />
+              <br></br>
               <span className='cost'>Price: <b>${price}</b></span>
             </div>
           </div>
