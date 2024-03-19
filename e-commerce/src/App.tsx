@@ -1,5 +1,5 @@
 // import Navbar from "./components/Navigation/navbar";
-import MyCart from "./components/AddtoCart/CartPage";
+import MyCart from "./Components/AddtoCart/CartPage";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
