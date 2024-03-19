@@ -30,7 +30,6 @@ function Confirm({ page, message, action, grad, onHide, show }: Props) {
       <video
             src="\images\Animation - 1710744632878.mp4"
             autoPlay
-            loop
             muted
           ></video>
           <div>

@@ -5,6 +5,8 @@ import Badge from "react-bootstrap/Badge";
 import Rating from '@mui/material/Rating';
 import axios from "axios";
 import { useState } from "react";
+import '/src/assets/css/_card-block.scss';
+
 
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
@@ -21,7 +23,7 @@ interface Props {
   prod_img: string;
   average_rating:number;
   description:null;
-  product_id:number
+  product_id:string
 }
 
 function Template({ prod_name, price, brand, prod_img, average_rating,description, product_id }: Props) {

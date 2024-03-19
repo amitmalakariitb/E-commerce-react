@@ -1,3 +1,7 @@
+import '/src/assets/css/_tag-block.scss';
+
+
+
 interface Props {
     item : string;
     color : string;

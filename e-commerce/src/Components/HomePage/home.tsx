@@ -3,6 +3,8 @@ import Tag from "./tag";
 import Template from "./Card";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import '/src/assets/css/_home-block.scss';
+
 
 
 interface Product {

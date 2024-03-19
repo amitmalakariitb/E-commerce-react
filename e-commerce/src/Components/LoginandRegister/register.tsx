@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import Confirm from "../Home Page/confirm";
+import Confirm from "../HomePage/confirm";
+import '/src/assets/css/_sign-block.scss';
+
 
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";

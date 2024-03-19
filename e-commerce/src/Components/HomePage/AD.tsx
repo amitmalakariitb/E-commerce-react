@@ -1,4 +1,7 @@
 import Carousel  from "react-bootstrap/Carousel";
+import '/src/assets/css/_ad-block.scss';
+
+
 function AD() {
   return (
     <Carousel
