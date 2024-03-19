@@ -1,10 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
+
+import App from './App.tsx'
+import 'bootstrap/dist/css/bootstrap.css'
+import './assets/style.css'
+import "./assets/CartPage.css"
+import "./assets/ItemContainer.css"
+import "./assets/quantity.css"
 import './assets/css/style.scss'
 import 'bootstrap/dist/css/bootstrap.css';
-import Confirm from './Components/Home Page/confirm';
 import './index.css'
+
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
