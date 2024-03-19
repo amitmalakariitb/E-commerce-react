@@ -1,100 +1,109 @@
 
-import './product_details/pd.css'
+
+import './product_details/pd.css';
 import { useEffect, useState } from 'react';
-import axios, { AxiosResponse } from "axios";
+import axios from 'axios';
+import { Rate } from 'antd';
+import { Link } from 'react-router-dom';
 
-import { Rate } from "antd";
-
-
+interface ReviewData {
+    rating: number;
+    reviewText: string;
+}
 
 const ProductDetails = () => {
-
-    const [data, setData] = useState<AxiosResponse | null | void>(null);
+    const [data, setData] = useState<any | null>(null);
 
     useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await axios.get('http://127.0.0.1:8000/api/product/products/1'); // need to update this link
-        //   console.log(product)
-        //   const result = await response.json();
-          setData(response.data);
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
-      };
-  
-      fetchData();
-      console.log(data)
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://127.0.0.1:8000/api/product/products/1');
+                setData(response.data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
     }, []);
 
-    
-    return (
-        
-        <div>
+    if (!data) {
+        return <p>Loading...</p>;
+    }
 
+
+    const [reviewText, setReviewText] = useState('');
+    const [selectedRating, setSelectedRating] = useState(0);
+    const backendURL = 'http://127.0.0.1:8000/api/products/1/submit_review';
+
+    const handleReviewSubmission = async (reviewData: ReviewData) => {
+        try {
+            const response = await axios.post(backendURL, reviewData);
+            console.log('Review submitted successfully:', response.data);
+        } catch (error) {
+            console.error('Error submitting review:', error);
+        }
+    };
+
+    const handleReviewSubmit = () => {
+        const reviewData: ReviewData = {
+            rating: selectedRating,
+            reviewText: reviewText,
+        };
+        handleReviewSubmission(reviewData);
+    };
+
+
+    return (
+        <div>
             <div className="box">
                 <div className="content">
-                    {/* <div className="img-box">
-                        <img src="./product_details/tree.jpg" alt="" />
-                    </div> */}
-
                     <div className="img-box">
-                        {/* Main image */}
                         <img src="./product_details/main.jpg" alt="" className="main-img" />
-                        {/* Smaller images */}
                         <div className="small-img-box">
                             {['./product_details/small1.jpg', './product_details/small2.jpg', './product_details/small3.jpg'].map((src, index) => (
                                 <img key={index} src={src} alt="" className="small-img" />
                             ))}
                         </div>
                     </div>
-
                     <div className="details">
                         <h3>{data.prod_name}</h3>
-                        <p className="brand">BrandName</p>
-                        <p className="description">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed labore, doloremque placeat libero expedita aspernatur tempore possimus vero veniam repudiandae quos, voluptatibus exercitationem.
-                        </p>
-                        {/* ratings implementation */}
+                        <p className="brand">{data.brand}</p>
+                        <p className="description">{data.description}</p>
                         <div className='rate-component'>
-                            <Rate defaultValue={3} disabled />
-                            {/* write the value from api in place of default value */}
+                            <Rate defaultValue={data.average_rating} disabled />
                         </div>
-                        <p className="price">Price: Rs. 2000</p>
-                        
-        
-
-                        <button className="Add_to_cart" id="Add-to-cart">Add to cart</button>
+                        <p className="price">Price: Rs. {data.price}</p>
+                        <Link to="/add_to_cart">
+                            <button className="Add_to_cart" id="Add-to-cart">Add to cart</button>
+                        </Link>
                         <br />
-                        <button className="Buy" id="Buy">Buy</button>
+                        <Link to="/checkout">
+                            <button className="Buy" id="Buy" >Buy</button>
+                        </Link>
                     </div>
                 </div>
-
                 <div className="reviews">
                     <div className="review-form">
                         <h3>Write a Review</h3>
-                        {/* ratings implementation */}
                         <div className='rate-component'>
-                            <Rate allowClear={false} />
-                            {/* get the value from the customer and return it */}
+                            <Rate allowClear={false} value={selectedRating} onChange={setSelectedRating} />
                         </div>
-                        <textarea rows={5}
+                        <textarea
+                            rows={5}
                             placeholder="Share your thoughts..."
-                        // value={newReview}
-                        // onChange={handleReviewChange}
+                            value={reviewText}
+                            onChange={(e) => setReviewText(e.target.value)}
                         ></textarea>
-                        <button className="submit-review" >
+                        <button className="submit-review" onClick={handleReviewSubmit}>
                             Submit Review
                         </button>
                     </div>
                 </div>
-                <div className="reviews" >
+                <div className="reviews">
                     <h3>Customer Reviews</h3>
-                    <div>
-                        <div className='rate-component'>
-                            <Rate defaultValue={3} disabled />
-                            {/* write the value from api in place of default value for the */}
-                        </div>
+                    <div className='rate-component'>
+                        <Rate defaultValue={3} disabled />
                     </div>
                     <div className='customer_reviews'>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic labore doloribus beatae, possimus sunt in recusandae consequatur porro facere aliquid totam expedita nihil?</p>
@@ -102,9 +111,8 @@ const ProductDetails = () => {
                     </div>
                 </div>
             </div>
-
         </div>
-    )
-}
+    );
+};
 
-export default ProductDetails
+export default ProductDetails;
