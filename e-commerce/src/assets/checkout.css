@@ -1,0 +1,146 @@
+/* .container-checkout {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+  }
+  
+
+  .address-details {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .address {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .address-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+  }
+  
+  .address-card input {
+    margin-right: 5px;
+  }
+  
+  .address-header {
+    margin-bottom: 10px;
+  }
+   */
+  /* Styling for the order summary section
+  .order-summary {
+    flex: 1;
+  }
+  
+  .order-items {
+    margin-bottom: 20px;
+  }
+  
+  .order-item {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .order-item img {
+    max-width: 50px;
+    margin-right: 10px;
+  }
+  
+  .item-details {
+    flex: 1;
+  }
+  
+  .total-price {
+    text-align: right;
+    font-weight: bold;
+  } */
+
+/* Main container for checkout */
+.checkout-container {
+  background-color: #D4D4BC;
+  display: grid;
+  grid-template-columns: 3fr 1fr; /* Two columns with equal width */
+  gap: 20px; /* Adjust spacing between columns and rows */
+  max-width: 1360px; /* Adjust as needed */
+  margin: 0 auto; 
+}
+
+/* Address details container */
+.address-details {
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+.address-heading{
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 80px;
+}
+.next-button{
+  width: 144px;
+  height: 73px;
+  border-radius: 8px;
+  border: 1px;
+  background-color: #FFE500;
+  color: #000000;
+  cursor: pointer;
+  border-radius: 8px;
+  float: right;
+font-family: Press Start 2P;
+font-size: 20px;
+font-weight: 500;
+line-height: 16px;
+text-align: center;
+
+}
+/* New address container */
+.new-address {
+  border: 1px solid #ccc;
+  padding: 20px;
+  
+}
+
+.address{
+
+}
+/* Address card */
+.address-card {
+  background: #FDFDEFC2;
+  gap: 0px;
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  opacity: 0px;
+  margin: 1rem;
+}
+
+.address-checkbox{
+
+}
+
+/* Form inputs */
+.new-address input[type="text"],
+.new-address input[type="number"],
+.new-address input[type="tel"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Add button */
+.new-address .add-button {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
