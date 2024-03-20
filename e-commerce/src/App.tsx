@@ -9,6 +9,7 @@ import Footer from './components/footer/Footer'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ProductDetails from './components/product_details/pd';
 import Checkout from './components/checkout/checkout';
+import Confirmation from './components/confirmation/confirmation';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -37,14 +38,8 @@ function App() {
 
         {/* Route for the Checkout component */}
         <Route path="/checkout" Component={Checkout} />
-
-        {/* Default route, can be a home page or another component */}
-        {/* <Route path="/" exact> */}
-          {/* Your home page content goes here */}
-          {/* <p className="read-the-docs">
-            Click on the Vite and React logos to learn more
-          </p> */}
-        {/* </Route> */}
+        {/* Route for the order confirmation component */}
+        <Route path='/confirmation' Component={Confirmation}></Route>
       </Routes>
       {/* <Footer /> */}
     </Router>

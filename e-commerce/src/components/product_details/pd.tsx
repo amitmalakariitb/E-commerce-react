@@ -6,6 +6,8 @@ import axios from 'axios';
 import { Rate } from 'antd';
 import { Link } from 'react-router-dom';
 import Footer from '../footer/Footer';
+import { useParams } from 'react-router-dom';
+
 
 interface ReviewData {
     username: string;
@@ -25,6 +27,12 @@ interface Review {
 }
 
 const ProductDetails = () => {
+
+    const {productId}= useParams()
+    // you can get the product id from here .... 
+
+
+
     const [data, setData] = useState<any | null>(null);
     // const [reviews, setReviews] = useState<any | null>(null);
     const [reviews, setReviews] = useState<Review[] | null>(null);
@@ -33,6 +41,8 @@ const ProductDetails = () => {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/api/product/products/1');
                 setData(response.data);
+                const productData = response.data
+                console.log(response.data)
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -52,7 +62,7 @@ const ProductDetails = () => {
         fetchData();
 
         // console.log(data)
-    }, []);
+    }, [productId]);
 
     // const [reviews, setReviews] = useState([]);
     // const [reviews, setReview] = useState<Review | null>(null);
@@ -108,6 +118,8 @@ const ProductDetails = () => {
         setReviewText('');
     setSelectedRating(0);
     };
+
+
 
 
 
