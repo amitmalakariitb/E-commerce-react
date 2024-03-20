@@ -4,6 +4,7 @@ import Availability from './availability';
 import QuantitySelector from './quantity';
 import axios from 'axios';
 import { useState } from 'react';
+import "../../assets/ItemContainer.css";
 
 interface ItemContainerProps {
   color: string;
@@ -17,9 +18,10 @@ interface ItemContainerProps {
   available:boolean;
   cart_item_id: number;
   description: string;
+  onItemRemove: (itemId: number) => void;
 }
 
-const ItemContainer: React.FC<ItemContainerProps> = ({product_id, product_img, product_name, quantity,price,rating ,color,style,available,cart_item_id,description}) => {
+const ItemContainer: React.FC<ItemContainerProps> = ({ product_img, product_name, quantity,price,rating ,color,style,available,cart_item_id,description,onItemRemove}) => {
 
   const [currentQuantity, setCurrentQuantity] = useState<number>(quantity);
 
@@ -45,6 +47,7 @@ const ItemContainer: React.FC<ItemContainerProps> = ({product_id, product_img, p
         // Send a request to remove the item from the backend
         await axios.delete(`http://127.0.0.1:8000/api/orders/edit_cart/${cart_item_id}`);
         // If the backend properly updates the frontend state, you might not need to do anything here
+        onItemRemove(cart_item_id);
     } catch (error) {
         console.error('Error removing item from cart:', error);
         // Handle error
@@ -81,7 +84,7 @@ const ItemContainer: React.FC<ItemContainerProps> = ({product_id, product_img, p
             <b>Color:</b>{color}</p>
             </div>
             <p id="bottom">
-            <button onClick={() => removeItemFromCart(product_id)}>Remove</button>       |  <span>Share</span>      |  <span>Move to wishlist</span>
+            <button onClick={() => removeItemFromCart()}>Remove</button>       |  <span>Share</span>      |  <span>Move to wishlist</span>
             </p>
           </div>
         </div>  

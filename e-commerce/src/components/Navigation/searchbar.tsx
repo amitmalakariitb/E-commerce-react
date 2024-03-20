@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+
+
 const SearchBar: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
 

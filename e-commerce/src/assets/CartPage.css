@@ -49,7 +49,7 @@
 
 #add_items {
     max-width: 12%;
-    position: fixed;
+    position: absolute;
     top: 40%;
     display: flex;
     z-index: 1; /* Ensure the content is above the navbar */
@@ -65,9 +65,12 @@
     font-weight: 400;
     line-height: 23px;
     letter-spacing: 0em;
-    text-align: center;
     margin-right: -30%;
     margin-left: 5%;
+}
+
+#amount {
+    font-family: 'Press Start 2P';
 }
 
 /* Adjustments to prevent overlap */
@@ -77,33 +80,52 @@
         height: 65%;
         width: 100vw;
     }
-
-    #footer {
+    
+    .order {
         position: absolute;
-        top: 59%; /* Adjust margin top to create space for navbar */
-        align-items: normal;
-        margin-left: 4%;
+        top: 85%; 
+        margin-left:5%;
     }
 
     #footer button {
-        margin-left: 30%;
+        margin-left: 35%;
     }
 
     .Total {
         margin-right: 10%;
         
     }
-
-    
-
-    #add_items {
-        position: absolute;
-        top: 85%; /* Adjust top position to leave space for navbar */
-        margin-left:5%;
-    }
+ 
 
     #add_items img{
         margin-left: 45%;
         width:75px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    
+    #add_items img{
+        margin-left: 0%;
+        width:35px;
+    }
+
+    #add_items p{
+        font-size: small;
+    }
+
+    #footer button {
+        margin-left: 25%;
+    }
+
+    #amount b{
+        font-size: small;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    #main_content{
+        top: 20%;
     }
 }
