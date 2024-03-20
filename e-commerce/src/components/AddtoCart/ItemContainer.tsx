@@ -25,7 +25,7 @@ interface ItemContainerProps {
 }
 
 
-const ItemContainer: React.FC<ItemContainerProps> = ({ product_img, product_name, quantity,price,rating ,color,style,available,cart_item_id,description,onItemRemove}) => {
+const ItemContainer: React.FC<ItemContainerProps> = ({ product_img, product_name, quantity, price, rating, color, style, available, cart_item_id, description, onItemRemove }) => {
 
 
   const [currentQuantity, setCurrentQuantity] = useState<number>(quantity);
@@ -50,10 +50,10 @@ const ItemContainer: React.FC<ItemContainerProps> = ({ product_img, product_name
   const removeItemFromCart = async () => {
     try {
 
-        // Send a request to remove the item from the backend
-        await axios.delete(`http://127.0.0.1:8000/api/orders/edit_cart/${cart_item_id}`);
-        // If the backend properly updates the frontend state, you might not need to do anything here
-        onItemRemove(cart_item_id);
+      // Send a request to remove the item from the backend
+      await axios.delete(`http://127.0.0.1:8000/api/orders/edit_cart/${cart_item_id}`);
+      // If the backend properly updates the frontend state, you might not need to do anything here
+      onItemRemove(cart_item_id);
 
     } catch (error) {
       console.error('Error removing item from cart:', error);
@@ -91,27 +91,15 @@ const ItemContainer: React.FC<ItemContainerProps> = ({ product_img, product_name
                     <b>Color:</b>{color}</p>
                 </div>
                 <p id="bottom">
-                  <button onClick={() => removeItemFromCart(product_id)}>Remove</button>       |  <span>Share</span>      |  <span>Move to wishlist</span>
+                  <button onClick={() => removeItemFromCart()}>Remove</button>       |  <span>Share</span>      |  <span>Move to wishlist</span>
                 </p>
               </div>
             </div>
             <div className="details">
               <p>Qty:</p>
               <QuantitySelector init_quantity={currentQuantity} onQuantityChange={handleQuantityChange} />
-              <br></br>
               <span className='cost'>Price: <b>${price}</b></span>
             </div>
-
-<!--             <p id="bottom">
-            <button onClick={() => removeItemFromCart()}>Remove</button>       |  <span>Share</span>      |  <span>Move to wishlist</span>
-            </p>
-          </div>
-        </div>  
-          <div className="details">
-            <p>Qty:</p>
-            <QuantitySelector init_quantity={currentQuantity} onQuantityChange={handleQuantityChange} />
-            <span className='cost'>Price: <b>${price}</b></span> -->
-
           </div>
         </div>
       </div>
