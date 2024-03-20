@@ -158,7 +158,7 @@ function SignUp() {
                             </span>
                           </button>
                           <div>
-                            <a className="link mx-5 px-4" href="">
+                            <a className="link mx-5 px-4" href="/login">
                               Alerady have an account?
                             </a>
                           </div>
