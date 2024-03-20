@@ -2,6 +2,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
+import { colors } from "@mui/material";
 
 interface Props {
   page: string;
@@ -26,16 +27,16 @@ function Confirm({ page, message, action, grad, onHide, show }: Props) {
       centered
     >
       <Modal.Header closeButton />
-      <Modal.Body className="d-flex flex-row align-items-center justify-content-around">
+      <Modal.Body className="d-flex flex-column align-items-center justify-content-around">
       <video
             src="\images\Animation - 1710744632878.mp4"
             autoPlay
             muted
           ></video>
-          <div>
-            <h3 className="fw-bolder fs-1">{message}</h3>
-            <Card.Text>{grad}</Card.Text>
-            <Button onClick={handleClick} variant="warning" className="fw-bold">
+          <div className="d-flex flex-column align-items-center">
+            <h3 className="fw-bolder fs-1" style={{color:'#000'}}>{message}</h3>
+            <Card.Text style={{color:'#000'}}>{grad}</Card.Text>
+            <Button style={{color:'#000'}} onClick={handleClick} variant="warning" className="fw-bold">
                 {action}
             </Button>
           </div>
