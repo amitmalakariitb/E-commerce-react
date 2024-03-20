@@ -3,9 +3,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './Components/LoginandRegister/login';
 import SignUp from './Components/LoginandRegister/register';
 import Home from './Components/HomePage/home';
-import MyCart from './Components/AddtoCart/CartPage';
 import AddProduct from './Components/SellerPortal/addproduct';
 import EditProduct from './Components/SellerPortal/editproduct';
+import MyCart from "./Components/AddtoCart/CartPage";
+import SellerPage from "./Components/SellerSection/sellerPage";
+
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/cartpage" element={<MyCart />} />
           <Route path="/addproduct" element={<AddProduct />}/>
           <Route path="/editproduct" element={<EditProduct />}/>
+          <Route path="/sellerpage" element={<SellerPage />} />
+
         </Routes>
       </div>
     </Router>

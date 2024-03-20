@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
 
+
+
 const SearchBar: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import "../../assets/quantity.css"
-// import 'bootstrap/dist/css/bootstrap.css'
-// import '../../assets/style.css'
+
+import "../../assets/quantity.css";
+
 interface QuantitySelectorProps {
   init_quantity: number;
   onQuantityChange: (newQuantity: number) => void;
