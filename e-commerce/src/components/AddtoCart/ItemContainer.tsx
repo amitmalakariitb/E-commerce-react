@@ -4,7 +4,10 @@ import Availability from './availability';
 import QuantitySelector from './quantity';
 import axios from 'axios';
 import { useState } from 'react';
-import "../../assets/ItemContainer.css";
+// import 'bootstrap/dist/css/bootstrap.css'
+import "../../assets/ItemContainer.css"
+// import '../../assets/style.css'
+
 
 interface ItemContainerProps {
   color: string;
@@ -15,13 +18,15 @@ interface ItemContainerProps {
   rating: number;
   product_id: number;
   style: string;
-  available:boolean;
+  available: boolean;
   cart_item_id: number;
   description: string;
   onItemRemove: (itemId: number) => void;
 }
 
+
 const ItemContainer: React.FC<ItemContainerProps> = ({ product_img, product_name, quantity,price,rating ,color,style,available,cart_item_id,description,onItemRemove}) => {
+
 
   const [currentQuantity, setCurrentQuantity] = useState<number>(quantity);
 
@@ -34,56 +39,70 @@ const ItemContainer: React.FC<ItemContainerProps> = ({ product_img, product_name
         //product_id: {product_id},
         quantity: newQuantity
       });
-      
+
     } catch (error) {
       console.error('Error updating quantity:', error);
       // Handle error
     }
   };
-  
+
 
   const removeItemFromCart = async () => {
     try {
+
         // Send a request to remove the item from the backend
         await axios.delete(`http://127.0.0.1:8000/api/orders/edit_cart/${cart_item_id}`);
         // If the backend properly updates the frontend state, you might not need to do anything here
         onItemRemove(cart_item_id);
+
     } catch (error) {
-        console.error('Error removing item from cart:', error);
-        // Handle error
+      console.error('Error removing item from cart:', error);
+      // Handle error
     }
   };
 
 
- const isEven = (cart_item_id % 2 )=== 0;
- // const ItemContainerClass = isEven ? 'colored-box-even' : 'colored-box-odd';
+  const isEven = (cart_item_id % 2) === 0;
+  // const ItemContainerClass = isEven ? 'colored-box-even' : 'colored-box-odd';
 
 
 
 
-  
-  return ( 
+
+  return (
     <>
-    <div>
-    <div className="responsive-div">
-      <div className={`colored-box ${isEven ? 'colored-box-even' : 'colored-box-odd'}`}></div>
-      <div className="content-container">
-        <img className="left-image" src={product_img} alt="pic" />
-        <div className="text-container">
-          <div className="middle-text">
-            <p className='title'>{product_name}</p>
-            <p className='description'>{description}</p>
-            <div id="container">
-              <RatingComponent rating={rating} />   
-              <div id="stock">
-                <Availability available={available} />
-              </div>  
+      <div>
+        <div className="responsive-div">
+          <div className={`colored-box ${isEven ? 'colored-box-even' : 'colored-box-odd'}`}></div>
+          <div className="content-container">
+            <img className="left-image" src={product_img} alt="pic" />
+            <div className="text-container">
+              <div className="middle-text">
+                <p className='title'>{product_name}</p>
+                <p className='description'>{description}</p>
+                <div id="container">
+                  <RatingComponent rating={rating} />
+                  <div id="stock">
+                    <Availability available={available} />
+                  </div>
+                </div>
+                <div id="specifications">
+                  <p><b>Style:</b>{style}<br />
+                    <b>Color:</b>{color}</p>
+                </div>
+                <p id="bottom">
+                  <button onClick={() => removeItemFromCart(product_id)}>Remove</button>       |  <span>Share</span>      |  <span>Move to wishlist</span>
+                </p>
+              </div>
             </div>
-            <div id="specifications">
-            <p><b>Style:</b>{style}<br/>
-            <b>Color:</b>{color}</p>
+            <div className="details">
+              <p>Qty:</p>
+              <QuantitySelector init_quantity={currentQuantity} onQuantityChange={handleQuantityChange} />
+              <br></br>
+              <span className='cost'>Price: <b>${price}</b></span>
             </div>
-            <p id="bottom">
+
+<!--             <p id="bottom">
             <button onClick={() => removeItemFromCart()}>Remove</button>       |  <span>Share</span>      |  <span>Move to wishlist</span>
             </p>
           </div>
@@ -91,11 +110,11 @@ const ItemContainer: React.FC<ItemContainerProps> = ({ product_img, product_name
           <div className="details">
             <p>Qty:</p>
             <QuantitySelector init_quantity={currentQuantity} onQuantityChange={handleQuantityChange} />
-            <span className='cost'>Price: <b>${price}</b></span>
+            <span className='cost'>Price: <b>${price}</b></span> -->
+
           </div>
+        </div>
       </div>
-    </div>
-    </div>
     </>
   );
 };

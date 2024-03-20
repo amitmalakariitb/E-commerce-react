@@ -1,10 +1,10 @@
 
+
 //import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import SearchBar from './searchbar';
 import '../../assets/navbar.css';
 import { useState } from 'react';
-
 
 const Navbar = () => {
   // State to manage the visibility of the dropdown menu
@@ -57,6 +57,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+
     </>
   );
 };
