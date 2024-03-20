@@ -4,8 +4,11 @@ import Login from './components/LoginandRegister/login';
 import SignUp from './components/LoginandRegister/register';
 import Home from './components/HomePage/home';
 import MyCart from "./components/AddtoCart/CartPage";
+import SellerPage from "./components/SellerSection/sellerPage";
+import Sellnavbar from "./components/Navigation/Sellnav";
 
-function App() {
+
+function App(){
   return (
     <Router>
       <div>
