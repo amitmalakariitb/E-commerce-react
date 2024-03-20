@@ -1,4 +1,11 @@
-
+body{
+  margin: 0;
+}
+p{
+  display: block;
+  margin: 0;
+  padding: 2px;
+}
 .product-details-body{
   font-family: 'Arial', sans-serif;
   background-color: #f4f4f4; 
@@ -50,56 +57,62 @@
 }
 
   
-  h3, .brand, .price {
+  .brand, .price,.description {
     margin: 0;
   }
   
-  h3 {
+  .product-name {
     font-size: 2.8rem; 
     color: #333; 
   }
   
   .brand {
-    font-size: 1.2rem;
+    font-size: 2rem;
     color: #777;
   }
   
   
   .description {
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #555; 
-    margin-top: 10px;
+    margin-top: 2px;
   }
   
   .price {
     text-align: right; 
     color: #333; 
     font-size: 24px; 
+    margin-right: 25vh;
 }
 
 .Add_to_cart {
-  width: 70%;
+  width: 50%;
   margin-left: 3rem;
   text-align: center; 
   background-color: #f6d677; 
   color: #000;
   font-size: 18px; 
   padding: 10px 0; 
+  border-radius: 15px;
+  margin-bottom: 0;
 }
 
 .Buy {
-    width: 70%; 
+    width: 50%; 
     margin-left: 3rem;
     text-align: center; 
     background-color: #FFA500; 
     color: #000; 
     font-size: 18px;
     padding: 10px 0; 
+    border-radius: 15px;
+    margin-top: 0;
 }
   
   .Add_to_cart:hover, .Buy:hover {
-    background-color: rgb(176, 118, 41);; /* Darker color on hover */
-    transform: scale(1.04);
+    background-color: rgb(186, 126, 48);
+    transform: scale(1.02);
+    border-radius: 30px;
   }
   
   .customer_name {
@@ -111,7 +124,7 @@
   .reviews {
     width: 100%;
     padding: 20px;
-    border-top: 1px solid #ddd; /* Border to separate reviews from details */
+    border-top: 1px solid #ddd;
   }
   
   .review-form {
@@ -161,4 +174,19 @@
 }
 .customer-name{
     text-align: right;
+}
+
+
+.out-of-stock {
+  color: #dc3545;
+  font-weight: bold;
+  margin-top: 2px;
+  font-size: 1.2rem;
+}
+
+.in-stock {
+  color: #28a745; 
+  font-weight: bold;
+  margin-top: 2px;
+  font-size: 1.2rem;
 }

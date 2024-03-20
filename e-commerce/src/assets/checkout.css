@@ -81,11 +81,11 @@
 .address-heading{
   font-weight: 700;
   font-size: 40px;
-  line-height: 80px;
+  line-height: 40px;
 }
 .next-button{
-  width: 144px;
-  height: 73px;
+  width: 100px;
+  height: 50px;
   border-radius: 8px;
   border: 1px;
   background-color: #FFE500;
@@ -107,9 +107,6 @@ text-align: center;
   
 }
 
-.address{
-
-}
 /* Address card */
 .address-card {
   background: #FDFDEFC2;
@@ -120,9 +117,7 @@ text-align: center;
   margin: 1rem;
 }
 
-.address-checkbox{
 
-}
 
 /* Form inputs */
 .new-address input[type="text"],
@@ -144,3 +139,24 @@ text-align: center;
   cursor: pointer;
   border-radius: 5px;
 }
+.name{
+  font-size: 1.2rem;
+  font-weight: 400;
+  font: bold;
+}
+
+
+
+.header__container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  /* max-width: 1200px; */
+  margin: 0 auto;
+}
+
+.header__logo {
+  width: 100%;
+  height: auto;
+}
+
