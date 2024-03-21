@@ -3,9 +3,9 @@
 import '../../assets/checkout.css'
 import { useEffect, useState } from 'react';
 import axios from 'axios'
-import { Rate } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import Footer from '../footer/Footer';
+import { useLocation } from 'react-router-dom';
 
 interface Address {
   user: number;
@@ -18,6 +18,11 @@ interface Address {
 }
 
 const Checkout = () => {
+  const location = useLocation();
+    const productId = location.state.productId;
+  // const {productId} = useParams()
+  console.log(productId)
+  // getting the data . this is working.
   const [data, setData] = useState<any | null>(null);
   // const [selectedAddresses, setSelectedAddresses] = useState<number[]>([]);
 
@@ -26,7 +31,7 @@ const Checkout = () => {
       try {
         const response = await axios.get('http://127.0.0.1:8000/api/user/view_saved_addresses/1');
         setData(response.data);
-        console.log(response.data)
+        // console.log(response.data)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -35,11 +40,17 @@ const Checkout = () => {
     fetchData();
   }, []);
 
-  const [selectedAddress, setSelectedAddress] = useState<number | null>(null);
+  const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
 
-  const handleAddressSelect = (index: number) => {
-    setSelectedAddress(index);
+  const handleAddressSelect = (address: Address) => {
+    setSelectedAddress(address);
+    // console.log(selectedAddress)
   };
+
+  // useEffect(() => {
+  //   console.log(selectedAddress); // Log selectedAddress after it's updated
+  // }, [selectedAddress]); // Run this effect whenever selectedAddress changes
+
 
   const [newAddress, setNewAddress] = useState<Address>({
     user: 1,
@@ -78,8 +89,8 @@ const Checkout = () => {
       <div className='checkout-container'>
         <div className='address-details'>
           <div>
-            <Link to="/confirmation">
-            <button className='next-button'>Next</button>
+            <Link to="/confirmation" state={{productId: productId,selectedAddress: selectedAddress}}>
+            <button className='next-button'>Confirm</button>
             </Link>
           </div>
           <h3 className='address-heading'>Select Delivery Address</h3>
@@ -95,8 +106,8 @@ const Checkout = () => {
                   /> */}
                   <input
                     type="radio" // change "checkbox" to "radio"
-                    checked={selectedAddress === index}
-                    onChange={() => handleAddressSelect(index)}
+                    checked={selectedAddress === address}
+                    onChange={() => handleAddressSelect(address)}
                   />
                 </label>
                 {/* Render address information here */}
