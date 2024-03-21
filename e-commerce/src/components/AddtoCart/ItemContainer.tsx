@@ -11,7 +11,7 @@ import "../../assets/ItemContainer.css"
 
 interface ItemContainerProps {
   color: string;
-  product_img: string;
+  //product_img: string;
   product_name: string;
   quantity: number;
   price: string;
@@ -25,7 +25,7 @@ interface ItemContainerProps {
 }
 
 
-const ItemContainer: React.FC<ItemContainerProps> = ({ product_img, product_name, quantity, price, rating, color, style, available, cart_item_id, description, onItemRemove }) => {
+const ItemContainer: React.FC<ItemContainerProps> = ({ product_name, quantity, price, rating, color, style, available, cart_item_id, description, onItemRemove }) => {
 
 
   const [currentQuantity, setCurrentQuantity] = useState<number>(quantity);
@@ -75,7 +75,7 @@ const ItemContainer: React.FC<ItemContainerProps> = ({ product_img, product_name
         <div className="responsive-div">
           <div className={`colored-box ${isEven ? 'colored-box-even' : 'colored-box-odd'}`}></div>
           <div className="content-container">
-            <img className="left-image" src={product_img} alt="pic" />
+            <img className="left-image" src='./images/products.jpg' alt="pic" />
             <div className="text-container">
               <div className="middle-text">
                 <p className='title'>{product_name}</p>

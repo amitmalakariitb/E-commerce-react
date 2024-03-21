@@ -2,8 +2,29 @@ import React from 'react';
 import "../../assets/SellerPage.css";
 import SellObjects from './SellObjects';
 import Sellnavbar from '../Navigation/Sellnav';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const SellerPage: React.FC = () => {
+  const [sellItems, setSellItems] = useState([]);
+
+  useEffect(() => {
+    async function getSellItems() {
+      try {
+        const response = await axios.get('http://127.0.0.1:8000/api/product/seller/1/products');
+        // Assuming response.data.sellitems is an array
+        console.log(response.data);
+        setSellItems(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    getSellItems();
+  }, []);
+
+
+
 
 
   return (
@@ -20,50 +41,19 @@ const SellerPage: React.FC = () => {
           </div>
         </div>
         <div id='objects'>
+          {sellItems.map((item) => (
           <SellObjects
             color='copper'
-            product_img='./images/flower.jpg'
-            product_name='Samsung 7kg Top Load Fully Automatic Washing Machine'
+            //product_img={item.prod_img}
+            product_name={item.prod_name}
             quantity={2}
-            price={3546}
-            rating={3}
+            price={item.price}
+            rating={item.average_rating}
             style='Top Load'
-            available={true}
-            description='with In-built Heater'
+            available={!item.is_out_of_stock}
+            description={item.description}
           />
-          <SellObjects
-            color='copper'
-            product_img='./images/flower.jpg'
-            product_name='Samsung 7kg Top Load Fully Automatic Washing Machine'
-            quantity={2}
-            price={3546}
-            rating={3}
-            style='Top Load'
-            available={true}
-            description='with In-built Heater'
-          />
-          <SellObjects
-            color='copper'
-            product_img='./images/flower.jpg'
-            product_name='Samsung 7kg Top Load Fully Automatic Washing Machine'
-            quantity={2}
-            price={3546}
-            rating={3}
-            style='Top Load'
-            available={true}
-            description='with In-built Heater'
-          />
-          <SellObjects
-            color='copper'
-            product_img='./images/flower.jpg'
-            product_name='Samsung 7kg Top Load Fully Automatic Washing Machine'
-            quantity={2}
-            price={3546}
-            rating={3}
-            style='Top Load'
-            available={true}
-            description='with In-built Heater'
-          />
+          ))}
         </div>
       </div>
     </>

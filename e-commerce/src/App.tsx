@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './Components/LoginandRegister/login';
-import SignUp from './Components/LoginandRegister/register';
-import Home from './Components/HomePage/home';
-import MyCart from "./Components/AddtoCart/CartPage";
-import SellerPage from "./Components/SellerSection/sellerPage";
+import Login from './components/LoginandRegister/login';
+import SignUp from './components/LoginandRegister/register';
+import Home from './components/HomePage/home';
+import MyCart from "./components/AddtoCart/CartPage";
+import SellerPage from "./components/SellerSection/sellerPage";
 
 
 function App() {

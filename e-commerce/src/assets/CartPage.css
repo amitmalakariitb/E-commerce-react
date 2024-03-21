@@ -77,18 +77,20 @@
     font-family: 'Press Start 2P';
 }
 
+.Total {
+    font-size:small;
+}
+
 /* Adjustments to prevent overlap */
 @media only screen and (max-width: 992px) {
     #main_content {
         top: 15%;
-        /* Adjust top position to leave space for navbar */
         height: 65%;
         width: 100vw;
-    }
+    } 
     
     .order {
         position: absolute;
-
         top: 85%; 
         margin-left:5%;
     }
@@ -112,18 +114,6 @@
 
 
 
-    #add_items {
-        position: absolute;
-        top: 85%;
-        /* Adjust top position to leave space for navbar */
-        margin-left: 5%;
-    }
-
-    #add_items img {
-        margin-left: 45%;
-        width: 75px;
-    }
-
 @media only screen and (max-width: 600px) {
     
     #add_items img{
@@ -144,10 +134,9 @@
     }
 
 }
-/* 
+
 @media only screen and (max-width: 480px) {
     #main_content{
         top: 20%;
     }
-
-} */
+}
