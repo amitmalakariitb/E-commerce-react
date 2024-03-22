@@ -6,7 +6,7 @@ import Availability from '../AddtoCart/availability';
 
 interface SellObjectsProps {
     color: string;
-    product_img: string;
+    //product_img: string;
     product_name: string;
     quantity: number;
     price: number;
@@ -18,13 +18,13 @@ interface SellObjectsProps {
 
 
 
-const SellObjects: React.FC<SellObjectsProps> =({color,product_img,product_name,quantity,price,rating,style,available,description}) =>{
+const SellObjects: React.FC<SellObjectsProps> =({color,product_name,quantity,price,rating,style,available,description}) =>{
 
     return(
         <>
         <div id="overall">
             <div className="itemdetails">
-             <img className="picture" src={product_img} alt="pic" />
+             <img className="picture" src='./public/images/products.jpg' alt="pic" />
              <div className="info">
                 <p className="name">{product_name}</p>
                 <p className="about">{description}</p>

@@ -43,7 +43,7 @@ const Navbar = () => {
             </div>
           </div>
           {/* Hide buttons on small screens below the lg breakpoint */}
-          <div className="d-none d-lg-flex">
+          <div className="d-none d-lg-flex options ">
             <button className="btn ml-2 other">
               Wishlist <img src="/images/heart-red.svg" alt="Heart" className="ml-2" />
             </button>

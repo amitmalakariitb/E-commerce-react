@@ -13,7 +13,7 @@ const SearchBar: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSearch} style={{ display: 'flex', alignItems: 'center' }}>
+    <form onSubmit={handleSearch} style={{ display: 'flex', alignItems: 'center', fontFamily: 'initial',height:'40px' }}>
       <input
         type="search"
         placeholder="Refrigerator,washing machine,..."

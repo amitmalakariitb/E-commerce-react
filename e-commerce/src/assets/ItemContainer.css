@@ -80,12 +80,10 @@
   }
   
   .details {
-    width: 20%; /* Set a fixed width for the rightmost text */
+    width: 30%; /* Set a fixed width for the rightmost text */
     font-size: larger ;
-    margin-left: 30%;
-    margin-right: 2%; 
+    margin-left: 10%;
     display: flex;
-    flex-direction: row;
   }
   
   .cost{
@@ -128,6 +126,6 @@
 
 @media only screen and (max-width: 992px) {
   .details QuantitySelector{
-    margin-right: 15%;
+    
   }
 }

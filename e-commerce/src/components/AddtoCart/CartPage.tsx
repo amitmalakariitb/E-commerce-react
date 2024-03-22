@@ -4,7 +4,6 @@ import ItemContainer from './ItemContainer';
 // import 'bootstrap/dist/css/bootstrap.css'
 import "../../assets/CartPage.css"
 import Navbar from '../Navigation/navbar';
-import '../../assets/style.css'
 
 const MyCart: React.FC = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -53,37 +52,13 @@ const MyCart: React.FC = () => {
 
   return (
     <>
+      <Navbar></Navbar>
       <div className='order'>
-        <Navbar></Navbar>
-
         <div id="add_items">
           <p>Add more here</p>
           <button id="click">
             <img src="../images/add-to-cart-3046.svg" alt="pic" />
           </button>
-        </div>
-
-
-        {/* Render other UI elements */}
-        <div id="main_content">
-          {/* Map over cartItems and render ItemContainer for each item */}
-          {cartItems.map((item) => (
-            <ItemContainer
-              product_id={item.product_id} // Use a unique key for each item
-              product_img={item.product_img}
-              product_name={item.product_name}
-              price={item.price}
-              quantity={item.quantity}
-              rating={item.average_rating}
-              color={''}
-              style={''}
-              available={!item.is_out_of_stock}
-              cart_item_id={item.cart_item_id}
-              description={item.description}
-
-              onItemRemove={handleItemRemove}
-            />
-          ))}
         </div>
         <div id="footer">
           <button id="click" onClick={handleCheckoutClick}>
@@ -100,6 +75,30 @@ const MyCart: React.FC = () => {
           </div>
         </div>
       </div>
+
+
+        {/* Render other UI elements */}
+        <div id="main_content">
+          {/* Map over cartItems and render ItemContainer for each item */}
+          {cartItems.map((item) => (
+            <ItemContainer
+              product_id={item.product_id} // Use a unique key for each item
+              //product_img={item.product_img}
+              product_name={item.product_name}
+              price={item.price}
+              quantity={item.quantity}
+              rating={item.average_rating}
+              color={''}
+              style={''}
+              available={!item.is_out_of_stock}
+              cart_item_id={item.cart_item_id}
+              description={item.description}
+
+              onItemRemove={handleItemRemove}
+            />
+          ))}
+        </div>
+       
 
     </>
   );

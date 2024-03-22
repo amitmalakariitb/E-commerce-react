@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/LoginandRegister/login';
 import SignUp from './components/LoginandRegister/register';
 import Home from './components/HomePage/home';
+
 import AddProduct from './components/SellerPortal/addproduct';
 import EditProduct from './components/SellerPortal/editproduct';
 import MyCart from "./components/AddtoCart/CartPage";
@@ -11,6 +12,7 @@ import SellerPage from "./components/SellerSection/sellerPage";
 import ProductDetails from './components/product_details/pd';
 import Checkout from './components/checkout/checkout';
 import Confirmation from './components/confirmation/confirmation';
+
 
 
 function App() {
