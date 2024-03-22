@@ -18,7 +18,7 @@ interface ReviewData {
 
 
 interface Review {
-    
+
     id: number;
     product: number;
     review: string;
@@ -28,7 +28,7 @@ interface Review {
 
 const ProductDetails = () => {
 
-    const {productId}= useParams()
+    // const { productId } = useParams()
     // you can get the product id from here .... 
 
 
@@ -62,7 +62,7 @@ const ProductDetails = () => {
         fetchData();
 
         // console.log(data)
-    }, [productId]);
+    }, []);
 
     // const [reviews, setReviews] = useState([]);
     // const [reviews, setReview] = useState<Review | null>(null);
@@ -116,10 +116,19 @@ const ProductDetails = () => {
         };
         handleReviewSubmission(reviewData);
         setReviewText('');
-    setSelectedRating(0);
+        setSelectedRating(0);
     };
 
 
+
+    const add_to_cart = async () => {
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/api/orders/add_to_cart/', { product_id: data.id, user: "1", quantity: 1 });
+            console.log('Added to cart succesfully', response.data);
+        } catch (error) {
+            console.error('Error submitting review:', error);
+        }
+    }
 
 
 
@@ -139,7 +148,7 @@ const ProductDetails = () => {
                             {['/watchimage.png', '/watchimage.png', '/watchimage.png'].map((src, index) => (
                                 <img key={index} src={src} alt="" className="small-img" />
                             ))}
-                            
+
                         </div>
                     </div>
                     <div className="details">
@@ -157,10 +166,14 @@ const ProductDetails = () => {
                             <Rate defaultValue={data.average_rating} disabled />
                         </div>
                         <p className="price">Price: Rs. {data.price}</p>
-                        <Link to="/add_to_cart">
-                            <button className="Add_to_cart" id="Add-to-cart">Add to cart</button>
+                        <Link to="/add_to_cart" >
+                            <button className="Add_to_cart" id="Add-to-cart" onClick={add_to_cart}>Add to cart</button>
                         </Link>
-                        <Link to="/checkout">
+                        {/* <Link to={{ pathname: '/checkout', state: { productId: data.id }} } >
+                            <button className="Buy" id="Buy" >Buy</button>
+                        </Link> */}
+                        <Link to="/checkout" state={{productId: data.id}}>
+
                             <button className="Buy" id="Buy">Buy</button>
                         </Link>
                     </div>
@@ -172,7 +185,7 @@ const ProductDetails = () => {
                             <Rate allowClear={false} value={selectedRating} onChange={setSelectedRating} />
                         </div>
                         <textarea
-                            rows={5}
+                            rows={3}
                             placeholder="Share your thoughts..."
                             value={review}
                             onChange={(e) => setReviewText(e.target.value)}
