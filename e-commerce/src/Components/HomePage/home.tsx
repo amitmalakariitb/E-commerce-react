@@ -5,7 +5,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import '/src/assets/css/_home-block.scss';
 
+axios.defaults.xsrfCookieName = "csrftoken";
+axios.defaults.xsrfHeaderName = "X-CSRFToken";
+axios.defaults.withCredentials = true;
 
+const client = axios.create({
+  baseURL: "http://127.0.0.1:8000",
+});
 
 interface Product {
   id:string;
@@ -35,11 +41,6 @@ function Home() {
           console.error('Error fetching product data:', error);
         });
     }, []);
-    
-    {productData.map((data) => {
-    
-                  
-    })}
 
   return (
     <div className="home-box-wrapper">

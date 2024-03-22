@@ -40,9 +40,9 @@ function Template({ prod_name, price, brand, prod_img, average_rating,descriptio
       });
   }
   return (
-      <Card className="card mb-4 mx-1" style={{ width: "18rem", height: "30rem"}}>
+      <Card className="card mb-4 mx-1" style={{ width: "24%", height: "30rem"}}>
         <Card.Img variant="top" src=".\images\cardimage.webp" style={{ height: "13rem", objectFit: "cover" }} />
-        <Col sm={8}>
+        <Col sm={4}>
           <Badge pill bg="warning" className="property">
             {prod_name}
           </Badge>
@@ -50,7 +50,7 @@ function Template({ prod_name, price, brand, prod_img, average_rating,descriptio
         <Card.Body>
           <Card.Title>{brand}</Card.Title>
           <Card.Text>₹{price}</Card.Text>
-          <Card.Text>{description}</Card.Text>
+          <Card.Text style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{description}</Card.Text>
           <Rating name="half-rating-read" defaultValue={average_rating} precision={0.1} readOnly />
         </Card.Body>
         <Card.Body className="p-0 mx-2 mb-5">
