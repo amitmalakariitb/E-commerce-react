@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Confirm from "../HomePage/confirm";
 import '/src/assets/css/_sign-block.scss';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
@@ -32,6 +33,9 @@ function Login() {
         setCurrentUser(true);
         console.log(username);
         console.log(password);
+        const userId = res.data.user_id;
+        AsyncStorage.setItem("userId", userId.toString());
+        console.log(userId)
       });
   }
 
@@ -46,7 +50,7 @@ function Login() {
       <div className="container-fluid">
         <div className="d-flex justify-content-center m-5 bada-dabba bg-body rounded">
           <form onSubmit={(e) => submitLogin(e)} className="w-100 rounded">
-            <h2 className="heading text-center mt-5">
+            <h2 className="topic text-center mt-5">
               Welcome to the world of Gadgets!
             </h2>
             <div className="d-flex align-items-center flex-column mt-5">

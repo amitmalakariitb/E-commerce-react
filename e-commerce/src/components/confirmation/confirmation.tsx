@@ -4,6 +4,7 @@ import axios from 'axios'
 import { Rate } from 'antd';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const Confirmation = () => {
@@ -13,6 +14,18 @@ const Confirmation = () => {
     const selectedAddress = location.state.selectedAddress;
     console.log(selectedAddress)
     console.log(productId)
+    const [userId, setUserId] = useState('');
+    useEffect(() => {
+        AsyncStorage.getItem('userId')
+          .then(userId => {
+            if (userId) {
+              setUserId(userId);
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+      }, []);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,6 +40,7 @@ const Confirmation = () => {
 
         fetchData();
     }, []);
+    
 
 
     const date = new Date();

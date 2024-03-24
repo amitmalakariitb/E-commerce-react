@@ -51,7 +51,7 @@ function SignUp() {
       <div className="container-fluid">
         <div className="d-flex justify-content-center m-5 bada-dabba bg-body rounded">
           <form onSubmit={(e) => submitSignUp(e)} className="w-100 rounded">
-            <h2 className="heading text-center mt-5">Assemble Your Account</h2>
+            <h2 className="topic text-center mt-5">Assemble Your Account</h2>
             <div className="form-wrapper d-flex column align-items-center justify-content-center">
               <div className="d-flex align-items-center flex-column mt-5">
                 <div className="form-group d-flex flex-column mt-4 col-sm-8">
@@ -165,8 +165,6 @@ function SignUp() {
                         </div>
                         <div className="d-flex row justify-content-end">
                           <div className="line"></div>
-                          <div className="line mt-2"></div>
-                          <div className="line mt-2"></div>
                           <div className="line mt-2"></div>
                           <div className="line mt-2"></div>
                         </div>

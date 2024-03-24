@@ -1,18 +1,16 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './components/LoginandRegister/login';
-import SignUp from './components/LoginandRegister/register';
-import Home from './components/HomePage/home';
+import Login from './Components/LoginandRegister/login';
+import SignUp from './Components/LoginandRegister/register';
+import Home from './Components/HomePage/home';
 
-import AddProduct from './components/SellerPortal/addproduct';
-import EditProduct from './components/SellerPortal/editproduct';
-import MyCart from "./components/AddtoCart/CartPage";
-import SellerPage from "./components/SellerSection/sellerPage";
-import ProductDetails from './components/product_details/pd';
-import Checkout from './components/checkout/checkout';
-import Confirmation from './components/confirmation/confirmation';
-
+import AddProduct from './Components/SellerPortal/addproduct';
+import EditProduct from './Components/SellerPortal/editproduct';
+import MyCart from "./Components/AddtoCart/CartPage";
+import SellerPage from "./Components/SellerSection/sellerPage";
+import ProductDetails from './Components/product_details/pd';
+import Checkout from './Components/checkout/checkout';
+import Confirmation from './Components/confirmation/confirmation';
 
 
 function App() {

@@ -1,5 +1,3 @@
-
-
 import '../../assets/pd.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -7,6 +5,7 @@ import { Rate } from 'antd';
 import { Link } from 'react-router-dom';
 import Footer from '../footer/Footer';
 import { useParams } from 'react-router-dom';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 interface ReviewData {
@@ -30,6 +29,19 @@ const ProductDetails = () => {
 
     // const { productId } = useParams()
     // you can get the product id from here .... 
+    const [userId, setUserId] = useState('');
+
+    useEffect(() => {
+        AsyncStorage.getItem('userId')
+        .then(userId => {
+            if (userId) {
+            setUserId(userId);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }, []);
 
 
 

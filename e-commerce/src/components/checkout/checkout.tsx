@@ -6,6 +6,7 @@ import axios from 'axios'
 import { Link} from 'react-router-dom';
 import Footer from '../footer/Footer';
 import { useLocation } from 'react-router-dom';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface Address {
   user: number;
@@ -25,6 +26,19 @@ const Checkout = () => {
   // getting the data . this is working.
   const [data, setData] = useState<any | null>(null);
   // const [selectedAddresses, setSelectedAddresses] = useState<number[]>([]);
+  const [userId, setUserId] = useState('');
+
+  useEffect(() => {
+    AsyncStorage.getItem('userId')
+      .then(userId => {
+        if (userId) {
+          setUserId(userId);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {

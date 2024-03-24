@@ -1,11 +1,11 @@
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
-import { Row } from "react-bootstrap";
 import Badge from "react-bootstrap/Badge";
 import Rating from '@mui/material/Rating';
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import '/src/assets/css/_card-block.scss';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 axios.defaults.xsrfCookieName = "csrftoken";
@@ -28,15 +28,30 @@ interface Props {
 
 function Template({ prod_name, price, brand, prod_img, average_rating,description, product_id }: Props) {
 
+  const [userId, setUserId] = useState('');
+
+  useEffect(() => {
+    AsyncStorage.getItem('userId')
+      .then(userId => {
+        if (userId) {
+          setUserId(userId);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }, []);
+
   function submitCart(){
     client
       .post("/api/orders/add_to_cart/", {
-        user : '1',
+        user : userId,
         product_id:product_id,
         quantity:'1'
       })
       .then(function (res) {
           console.log(product_id)
+          console.log(userId)
       });
   }
   return (
@@ -54,7 +69,7 @@ function Template({ prod_name, price, brand, prod_img, average_rating,descriptio
           <Rating name="half-rating-read" defaultValue={average_rating} precision={0.1} readOnly />
         </Card.Body>
         <Card.Body className="p-0 mx-2 mb-5">
-        <Row className="justify-content-around">
+        <div className="d-flex justify-content-around">
           <Col xs={6} className="text-center">
             <Card.Link href="#">
               <Badge className="font" pill bg="dark" onClick={(e) => submitCart()}>
@@ -69,7 +84,7 @@ function Template({ prod_name, price, brand, prod_img, average_rating,descriptio
               </Badge>
             </Card.Link>
           </Col>
-        </Row>
+        </div>
         </Card.Body>
       </Card>
   );

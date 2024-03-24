@@ -4,9 +4,24 @@ import ItemContainer from './ItemContainer';
 // import 'bootstrap/dist/css/bootstrap.css'
 import "../../assets/CartPage.css"
 import Navbar from '../Navigation/navbar';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const MyCart: React.FC = () => {
   const [cartItems, setCartItems] = useState([]);
+
+  const [userId, setUserId] = useState('');
+
+  useEffect(() => {
+    AsyncStorage.getItem('userId')
+      .then(userId => {
+        if (userId) {
+          setUserId(userId);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }, []);
 
   useEffect(() => {
     async function getCartItems() {
