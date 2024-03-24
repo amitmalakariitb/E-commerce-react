@@ -4,6 +4,7 @@ import Template from "./Card";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import '/src/assets/css/_home-block.scss';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
@@ -24,6 +25,19 @@ interface Product {
 }
 
 function Home() {
+  const [userId, setUserId] = useState('');
+
+  useEffect(() => {
+    AsyncStorage.getItem('userId')
+      .then(userId => {
+        if (userId) {
+          setUserId(userId);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }, []);
     const [activeTag, setActiveTag] = useState('');
 
     const handleTagClick = (item: string) => {
